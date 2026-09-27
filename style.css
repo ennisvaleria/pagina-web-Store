@@ -1,0 +1,173 @@
+*::after,
+*::before,
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body{
+    margin: 0 auto;
+    max-width: 1200px;
+    font-family: 'Lato';
+}
+
+img{
+    max-width: 100%;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    position: relative;
+}
+
+.menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.logo{
+    font-size: 25px;
+    color: #000; 
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a{
+    font-size: 18px;
+    padding: 20px;
+    font-weight: 600;
+    color: #000;
+    display: block;
+    border-radius: 15px;
+}
+
+.menu .navbar ul li a:hover{
+    color: #FF9000;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono{
+    width: 25px;
+}
+
+.submenu #carrito{
+    display: none;
+}
+
+.submenu:hover #carrito{
+    display: block;
+    position: absolute;
+    right: 0%;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    z-index: 1;
+    background-color: #77777797;
+    padding: 20px;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+table{
+    width: 100%;
+}
+
+th, td{
+    color: #fff;
+}
+
+.borrar{
+
+}
+
+.destacado-container{
+
+}
+
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+
+.container-items{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.item{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+
+.info-item{
+    padding: 15px 30px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.item img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: all .5s;
+}
+
+.item figure{
+    overflow: hidden;
+}
+
+.item :hover img{
+    transform: scale(1.1);
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 900;
+    margin-top: auto;
+}
+
+.info-item button{
+    border: none;
+    background: none;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.info-item button:hover{
+    background-color: #c9c9c9;
+    color: #000;
+}
