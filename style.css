@@ -25,11 +25,12 @@ img{
     position: relative;
 }
 
-.menu{
+.menu-container{
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+    padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,12 +44,12 @@ img{
     font-weight: 800;
 }
 
-.menu .navbar ul li{
+.menu-container .navbar ul li{
     position: relative;
     float: left;
 }
 
-.menu .navbar ul li a{
+.menu-container .navbar ul li a{
     font-size: 18px;
     padding: 20px;
     font-weight: 600;
@@ -57,7 +58,7 @@ img{
     border-radius: 15px;
 }
 
-.menu .navbar ul li a:hover{
+.menu-container .navbar ul li a:hover{
     color: #FF9000;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
 }
@@ -68,8 +69,13 @@ img{
 
 .menu-icono{
     width: 25px;
+    cursor:pointer;
 }
 
+#icon-carrito{
+    width: 25px;
+    cursor: pointer;
+}
 .submenu #carrito{
     display: none;
 }
