@@ -10,148 +10,160 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="inicio">
+        <img src="bg.png" class="bg" alt="">
         <div class="menu-container">
-            <a href="#" class="logo">TecStore</a>
+            <a href="#inicio" class="logo">TecStore</a>
             <input type="checkbox" id="menu">
             <label for="menu">
                 <img src="menu.png" class="menu-icono" alt="">
             </label>
-            <nav class="navbar">
-                <ul>
-                    <li>
-                        <a href="#">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="#">Catalogo</a>
-                    </li>
-                    <li>
-                        <a href="#">Pedidos</a>
-                    </li>
-                </ul>
-            </nav>
-            <div>
-                <ul>
-                    <li class="submenu">
-                        <img src="carrito.jpg" id="icon-carrito" alt="carrito">
-                        <div id="carrito">
-                            <table id="lista-carrito">
-                                <thead>
-                                    <tr>
-                                        <th>Imagen</th>
-                                        <th>Nombre</th>
-                                        <th>Precio</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                            <button type="button" id="vaciar-carrito" class="btn-2">Vaciar Carrito</button>
-                        </div>
-                    </li>
-                </ul>
+            <div class="navbar-carrito">
+                <nav class="navbar">
+                    <ul>
+                        <li>
+                            <a href="#inicio">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#catalogo">Catalogo</a>
+                        </li>
+                        <li>
+                            <a href="#pedidos">Pedidos</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div>
+                    <ul>
+                        <li class="submenu">
+                            <img src="carrito.jpg" id="icon-carrito" alt="carrito">
+                            <div id="carrito">
+                                <table id="lista-carrito">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <button type="button" id="vaciar-carrito" class="btn-2">Vaciar Carrito</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div class="header-content container">
-        <div class="header-txt">
-            <h1><span>Bienvenido</span>, </br> los mejores périfericos Gamer los encuentras aquí.</h1>
         </div>
+        <div  class="header-content">
+            <div class="header-txt">
+                <h1>Bienvenido, <br> los mejores periféricos Gamer los encuentras <span>aquí</span>.</h1>
+            </div>
         </div>
     </header>
+    <main>
+        <section class="destacado-container">
+            <h2>Lo más Destacado</h2>
+            <div class="destacado-content">
 
-    <section class="destacado-container">
-        <h2>Lo más Destacado</h2>
-        <div class="destacado-content">
+                <div class="destacado">
+                    <img src="scyrox_v8s_yellow.png" alt="Mouse Gamer Scyrox V8 Yellow">
+                    <h3>Mouse Gamer Scyrox V8 Yellow</h3>
+                </div>
 
-            <div class="destacado">
-                <img src="scyrox_v8s_yellow.png" alt="Mouse Gamer Scyrox V8 Yellow">
-                <h3>Mouse Gamer Scyrox V8 Yellow</h3>
+                <div class="destacado">
+                    <img src="Logitech_Pro_X_Superlight_2_Lightspeed.jpg" alt="Mouse Gamer Logitech G PRO X Superlight 2">
+                    <h3>Mouse Gamer Logitech G PRO X Superlight 2</h3>
+                </div>
+
+                <div class="destacado">
+                    <img src="Teclado_Gamer_Logitech_G_PRO_X_60.png" alt="Teclado Gamer Logitech G PRO X 60">
+                    <h3>Teclado Gamer Logitech G PRO X 60</h3>
+                </div>
+
+                <div class="destacado">
+                    <img src="Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png"
+                        alt="Auriculares Gamer Logitech Astro A50 X Blanco Wireless">
+                    <h3>Auriculares Gamer Logitech Astro A50 X Blanco Wireless</h3>
+                </div>
             </div>
-
-            <div class="destacado">
-                <img src="Logitech_Pro_X_Superlight_2_Lightspeed.jpg" alt="Mouse Gamer Logitech G PRO X Superlight 2">
-                <h3>Mouse Gamer Logitech G PRO X Superlight 2</h3>
+        </section>
+        <section class="catalogo" id="catalogo">
+            <h2>Catálogo</h2>
+            <div class="container-items">
+            <div class="item">
+                <figure>
+                    <img src="scyrox_v8s_yellow.png" alt="Mouse Gamer Scyrox V8 Yellow">
+                </figure>
+                <div class="info-item">
+                    <h3>Mouse Gamer Scyrox V8 Yellow</h3>
+                    <p>
+                        El Scyrox V8 es un mouse gamer diseñado para ofrecer un alto rendimiento tanto en modo inalámbrico
+                        como cableado, ideal para jugadores competitivos en Chile que buscan precisión, velocidad y
+                        comodidad.
+                    </p>
+                    <p class="price">
+                        $85.990
+                    </p>
+                    <button>Añadir al carrito</button>
+                </div>
             </div>
-
-            <div class="destacado">
-                <img src="Teclado_Gamer_Logitech_G_PRO_X_60.png" alt="Teclado Gamer Logitech G PRO X 60">
-                <h3>Teclado Gamer Logitech G PRO X 60</h3>
+            <div class="item">
+                <figure>
+                    <img src="Logitech_Pro_X_Superlight_2_Lightspeed.jpg" alt="Mouse Gamer Logitech G PRO X Superlight 2">
+                </figure>
+                <div class="info-item">
+                    <h3>Mouse Gamer Logitech G PRO X Superlight 2</h3>
+                    <p>
+                        El Logitech® G PRO X Superlight 2 es la nueva evolución de un ícono de los juegos profesionales, y
+                        te ayuda a llevar tu juego al siguiente nivel con mayor velocidad y precisión.
+                    </p>
+                    <p class="price">
+                        $135.990
+                    </p>
+                    <button>Añadir al carrito</button>
+                </div>
             </div>
-
-            <div class="destacado">
-                <img src="Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png"
-                    alt="Auriculares Gamer Logitech Astro A50 X Blanco Wireless">
-                <h3>Auriculares Gamer Logitech Astro A50 X Blanco Wireless</h3>
+            <div class="item">
+                <figure>
+                    <img src="Teclado_Gamer_Logitech_G_PRO_X_60.png" alt="Teclado Gamer Logitech G PRO X 60">
+                </figure>
+                <div class="info-item">
+                    <h3>Teclado Gamer Logitech G PRO X 60</h3>
+                    <p>
+                        Teclado inalámbrico para juegos LIGHTSPEED con un 60 % menos de tamaño, KEYCONTROL, LIGHTSYNC RGB e
+                        interruptores ópticos.
+                    </p>
+                    <p class="price">
+                        $178.990
+                    </p>
+                    <button>Añadir al carrito</button>
+                </div>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png"
+                        alt="Auriculares Gamer Logitech Astro A50 X Blanco Wireless">
+                </figure>
+                <div class="info-item">
+                    <h3>Auriculares Gamer Logitech Astro A50 X Blanco Wireless</h3>
+                    <p>
+                        Los Astro A50 X están diseñados para jugar con la innovadora tecnología PLAYSYNC.
+                    </p>
+                    <p class="price">
+                        $335.990
+                    </p>
+                    <button>Añadir al carrito</button>
+                </div>
             </div>
         </div>
-    </section>
-    
-    <main class="container-items">
-        <div class="item">
-            <figure>
-                <img src="scyrox_v8s_yellow.png" alt="Mouse Gamer Scyrox V8 Yellow">
-            </figure>
-            <div class="info-item">
-                <h4>Mouse Gamer Scyrox V8 Yellow</h4>
-                <p>
-                    El Scyrox V8 es un mouse gamer diseñado para ofrecer un alto rendimiento tanto en modo inalámbrico
-                    como cableado, ideal para jugadores competitivos en Chile que buscan precisión, velocidad y
-                    comodidad.
-                </p>
-                <p class="price">
-                    $85.990
-                </p>
-                <button>Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-            <figure>
-                <img src="Logitech_Pro_X_Superlight_2_Lightspeed.jpg" alt="Mouse Gamer Logitech G PRO X Superlight 2">
-            </figure>
-            <div class="info-item">
-                <h4>Mouse Gamer Logitech G PRO X Superlight 2</h4>
-                <p>
-                    El Logitech® G PRO X Superlight 2 es la nueva evolución de un ícono de los juegos profesionales, y
-                    te ayuda a llevar tu juego al siguiente nivel con mayor velocidad y precisión.
-                </p>
-                <p class="price">
-                    $135.990
-                </p>
-                <button>Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-            <figure>
-                <img src="Teclado_Gamer_Logitech_G_PRO_X_60.png" alt="Teclado Gamer Logitech G PRO X 60">
-            </figure>
-            <div class="info-item">
-                <h4>Teclado Gamer Logitech G PRO X 60</h4>
-                <p>
-                    Teclado inalámbrico para juegos LIGHTSPEED con un 60 % menos de tamaño, KEYCONTROL, LIGHTSYNC RGB e
-                    interruptores ópticos.
-                </p>
-                <p class="price">
-                    $178.990
-                </p>
-                <button>Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="item">
-            <figure>
-                <img src="Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png"
-                    alt="Auriculares Gamer Logitech Astro A50 X Blanco Wireless">
-            </figure>
-            <div class="info-item">
-                <h4>Auriculares Gamer Logitech Astro A50 X Blanco Wireless</h4>
-                <p>
-                    Los Astro A50 X están diseñados para jugar con la innovadora tecnología PLAYSYNC.
-                </p>
-                <p class="price">
-                    $335.990
-                </p>
-                <button>Añadir al carrito</button>
-            </div>
-        </div>
+        </section>
+        <section class="pedidos" id="pedidos">
+            <h2>Pedidos</h2>
+            <p>Aquí van los pedidos</p>
+        </section>
     </main>
+ 
 
     <footer class="footer">
         <div class="footer-content container">
@@ -161,5 +173,7 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
