@@ -121,7 +121,7 @@ th, td{
     padding: 5px 10px;
     text-decoration: none;
     color: #fff;
-    font-width: 800;
+    font-weight: 800;
 } 
 
 .bg{
@@ -303,3 +303,86 @@ main{
     display: none;
 }
 
+
+/* ===== Carrito: contador, total, legibilidad ===== */
+#contador-carrito{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background-color: #FF9000;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.submenu:hover #carrito,
+.submenu #carrito.abierto{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 1;
+    background-color: rgba(30, 30, 30, 0.95);
+    padding: 20px;
+    min-width: 420px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#lista-carrito td{ padding: 6px 4px; font-size: 14px; }
+#lista-carrito th{ text-align: left; font-size: 14px; }
+
+#carrito-vacio{ color: #fff; text-align: center; padding: 10px 0; }
+
+.carrito-total{ color: #fff; font-weight: 800; text-align: right; margin: 12px 0; }
+
+.btn-2{
+    border: none;
+    background-color: #FF9000;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== Buscador ===== */
+.buscador{ margin-bottom: 30px; }
+
+.buscador input{
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.buscador input:focus{ border-color: #FF9000; }
+
+#sin-resultados{
+    display: none;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 18px;
+}
+
+/* ===== Footer / Instagram ===== */
+.footer{ padding: 50px 30px 30px; }
+
+.footer .link{ display: flex; justify-content: center; }
+
+.instagram img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform .3s;
+}
+
+.instagram:hover img{ transform: scale(1.15); }

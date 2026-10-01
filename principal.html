@@ -36,6 +36,7 @@
                     <ul>
                         <li class="submenu">
                             <img src="carrito.jpg" id="icon-carrito" alt="carrito">
+                            <span id="contador-carrito">0</span>
                             <div id="carrito">
                                 <table id="lista-carrito">
                                     <thead>
@@ -43,11 +44,14 @@
                                             <th>Imagen</th>
                                             <th>Nombre</th>
                                             <th>Precio</th>
+                                            <th>Cant.</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <p id="carrito-vacio">Tu carrito está vacío</p>
+                                <p class="carrito-total">Total: <span id="total-carrito">$0</span></p>
                                 <button type="button" id="vaciar-carrito" class="btn-2">Vaciar Carrito</button>
                             </div>
                         </li>
@@ -90,6 +94,10 @@
         </section>
         <section class="catalogo" id="catalogo">
             <h2>Catálogo</h2>
+            <div class="buscador">
+                <input type="search" id="buscador" placeholder="Buscar productos (mouse, teclado, auriculares...)" autocomplete="off">
+            </div>
+            <p id="sin-resultados">No encontramos productos con esa búsqueda.</p>
             <div class="container-items">
             <div class="item">
                 <figure>
@@ -168,11 +176,13 @@
     <footer class="footer">
         <div class="footer-content container">
             <div class="link">
-
+                <a href="https://www.instagram.com/TU_USUARIO/" target="_blank" rel="noopener noreferrer" class="instagram" aria-label="Instagram">
+                    <img src="instagram.png" alt="Instagram">
+                </a>
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="principal.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </body>
