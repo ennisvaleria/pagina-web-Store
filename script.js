@@ -107,20 +107,14 @@ function iniciarSesion() {
         return;
     }
 
-    var usuariosExistentes = leerDato("listaCorreos");
+    var passGuardada = leerDato("pass_" + correo);
 
-    if (usuariosExistentes == null || usuariosExistentes.split(",").indexOf(correo) == -1) {
-        alert("El correo no está registrado.");
-        document.getElementById('correo-inicio').focus();
+    if (passGuardada == null || passGuardada != contrasena) {
+        alert("Correo o contraseña incorrectos.");
         return;
     }
 
-    var contrasenaGuardada = leerDato("pass_" + correo);
-
-    if (contrasenaGuardada == contrasena) {
-        window.location.href = "principal.html";
-    } else {
-        alert("Contraseña incorrecta.");
-        document.getElementById('contraseña-login').focus();
-    }
+    guardarDato("usuarioSesion", correo);
+    alert("Bienvenido al sistema.");
+    window.location.href = "principal.html";
 }

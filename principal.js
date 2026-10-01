@@ -86,3 +86,56 @@ buscador.addEventListener("input", () => {
     });
     sinResultados.style.display = visibles ? "none" : "block";
 });
+
+// Al final del archivo principal.js
+function actualizarDatosUsuario() {
+    const userEmail = localStorage.getItem("usuarioSesion") || leerDato("usuarioSesion");
+    const nameEl = document.getElementById("user-full-name");
+    const userDropdown = document.getElementById("user-dropdown");
+    
+    if (userEmail) {
+        const nombre = leerDato("nombre_" + userEmail);
+        const apellido = leerDato("apellido_" + userEmail);
+        if (nombre && apellido) {
+            if (nameEl) nameEl.textContent = `${nombre} ${apellido}`;
+        }
+    } else {
+        if (nameEl) nameEl.textContent = "Invitado";
+    }
+}
+
+// Función para cerrar sesión
+function cerrarSesion() {
+    // Borrar cookie de sesión
+    document.cookie = "usuarioSesion=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    localStorage.removeItem("usuarioSesion");
+    alert("Has cerrado sesión correctamente.");
+    window.location.href = "log_ing.html";
+}
+
+// Inicialización
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarDatosUsuario();
+    
+    const btnLogout = document.getElementById("btn-logout");
+    if (btnLogout) {
+        btnLogout.addEventListener("click", cerrarSesion);
+    }
+});
+
+// Necesitamos importar leerDato en principal.js o mover la lógica
+// Como leerDato está en script.js, lo ideal es que esté disponible globalmente o repetirlo
+// Para simplicidad en este ejercicio, añadiré leerDato a principal.js también
+function leerDato(nombre) {
+    var search = nombre + "=";
+    if (document.cookie.length > 0) {
+        var i = document.cookie.indexOf(search);
+        if (i != -1) {
+            i += search.length;
+            var j = document.cookie.indexOf(";", i);
+            if (j == -1) j = document.cookie.length;
+            return unescape(document.cookie.substring(i, j));
+        }
+    }
+    return null;
+}
