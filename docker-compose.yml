@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web-store:
+    image: nginx:alpine
+    container_name: tecstore-web
+    ports:
+      - "79:80"
+    volumes:
+      - .:/usr/share/nginx/html
+    restart: always
