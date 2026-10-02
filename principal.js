@@ -110,7 +110,7 @@ function cerrarSesion() {
     document.cookie = "usuarioSesion=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     localStorage.removeItem("usuarioSesion");
     alert("Has cerrado sesión correctamente.");
-    window.location.href = "log_ing.html";
+    window.location.href = "index.html";
 }
 
 // Inicialización
