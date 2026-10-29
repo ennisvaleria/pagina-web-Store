@@ -169,3 +169,10 @@ body{
 .container.toggle .welcome-sign-up{
     transform: translateX(-100%);
 }
+
+.error { 
+    color: #ff4d4d; font-size: 13px; margin: 4px 0; 
+}
+.exito { 
+    color: #2e9e4f; font-size: 13px; margin: 4px 0; 
+}

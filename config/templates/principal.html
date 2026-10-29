@@ -58,16 +58,15 @@
                             <img src="{% static 'images/user-icon.png' %}" id="icon-usuario" alt="usuario" style="width: 25px; cursor: pointer;">
                             <div id="user-dropdown" class="user-dropdown">
                                 <div class="user-info">
-                                    <p id="user-full-name">Invitado</p>
+                                    <p id="user-full-name">{{ usuario }}</p>
                                 </div>
                                 <hr>
-                                <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+                                <button id="btn-logout" class="btn-logout" data-url="{% url 'logout' %}">Cerrar Sesión</button>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
         </div>
         <div  class="header-content">
             <div class="header-txt">

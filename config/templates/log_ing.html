@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,60 +9,83 @@
     <link rel="stylesheet" href="{% static 'css/stylev2.css' %}">
 </head>
 <body>
-    <div class="container">
+    <div class="container {% if mostrar_registro %}toggle{% endif %}">
         <div class="container-form">
-            <form class="sign-in"><h2>Iniciar sesión</h2>
-            <div class="social-networks">
-                <ion-icon name="logo-instagram"></ion-icon>
-            </div>
-            <span>Ingrese su correo y contraseña.</span>
-            <div class="container-input">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" id="correo-inicio" name="correo" min="3" max="50" placeholder="Email" required/>
-            </div>
-            <div class="container-input">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" id="contraseña-login" placeholder="Contraseña"/>
-            </div>
-            <a href="#">¿Olvidaste tu contraseña?</a>
-            <button type="button" class="button" onclick="iniciarSesion()">INICIAR SESIÓN</button>
+            <form class="sign-in" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h2>Iniciar sesión</h2>
+                <div class="social-networks">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </div>
+                <span>Ingrese su correo y contraseña.</span>
+
+                {% for message in messages %}
+                    <p class="exito">{{ message }}</p>
+                {% endfor %}
+                {% if error_login %}
+                    <p class="error">{{ error_login }}</p>
+                {% endif %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p class="error">{{ field.label }}: {{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="container-input">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" id="correo-inicio" name="correo" placeholder="Email" required/>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" id="contraseña-login" name="password" placeholder="Contraseña" required/>
+                </div>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button type="submit" class="button">INICIAR SESIÓN</button>
             </form>
         </div>
+
         <div class="container-form">
-            <form class="sign-up"><h2>Registrarse</h2>
-            <div class="social-networks">
-                <ion-icon name="logo-instagram"></ion-icon>
-            </div>
-            <span>Llene todo los campos para registrarse.</span>
-            <div class="container-input">
-                <ion-icon name="person-outline"></ion-icon>
-                <input type="text" id="nombre" name="nombre" minlength="3" maxlength="50" autocomplete="given-name" placeholder="Nombre"/>
-            </div>
-            <div class="container-input">
-                <ion-icon name="person-outline"></ion-icon>
-                <input type="text" id="apellido" name="apellido" minlength="3" maxlength="50" autocomplete="family-name" placeholder="Apellido"/>
-            </div>
-            <div class="container-input">
-                <ion-icon name="home-outline"></ion-icon>
-                <input type="text" id="direccion" name="direccion" minlength="3" maxlength="50" autocomplete="street-address" placeholder="Dirección"/>
-            </div>
-            <div class="container-input">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" id="correo" name="correo" minlength="3" maxlength="50" placeholder="Email"/>
-            </div>
-            <div class="container-input">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" id="contraseña" placeholder="Contraseña"/>
-            </div>
-            <button type="button" class="button" onclick="registrarUsuario()">REGISTRARSE</button>
+            <form class="sign-up" method="post" action="{% url 'registro' %}">
+                {% csrf_token %}
+                <h2>Registrarse</h2>
+                <div class="social-networks">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </div>
+                <span>Llene todo los campos para registrarse.</span>
+
+                {% for field in registro_form %}
+                    {% for error in field.errors %}
+                        <p class="error">{{ field.label }}: {{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="container-input">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido"/>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <input type="text" id="direccion" name="direccion" placeholder="Dirección"/>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" id="correo" name="correo" placeholder="Email"/>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" id="contraseña" name="password" placeholder="Contraseña"/>
+                </div>
+                <button type="submit" class="button">REGISTRARSE</button>
             </form>
         </div>
 
         <div class="container-welcome">
             <div class="welcome-sign-up welcome">
-                <h3>
-                    Bienvenido
-                </h3>
+                <h3>Bienvenido</h3>
                 <p>Ingrese sus datos personales para usar todas las funciones del sitio</p>
                 <button class="button" id="btn-sign-up">Registrarse</button>
             </div>
