@@ -24,4 +24,5 @@ urlpatterns = [
     path('registro', views.registro, name='registro'),
     path('principal', views.inicio, name='inicio'),
     path('logout', views.logout, name='logout'),  
+    path('api_productos', views.api_productos, name='api_productos'),
 ]

@@ -170,9 +170,16 @@ body{
     transform: translateX(-100%);
 }
 
-.error { 
-    color: #ff4d4d; font-size: 13px; margin: 4px 0; 
+.error {
+    color: #ff4d4d;
+    font-size: 13px;
+    margin: 2px 0;
+    text-align: left;
+    width: 100%;
 }
-.exito { 
-    color: #2e9e4f; font-size: 13px; margin: 4px 0; 
+
+.exito {
+    color: #2e9e4f;
+    font-size: 13px;
+    margin: 4px 0;
 }
