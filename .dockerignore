@@ -1,0 +1,10 @@
+# Ignorar archivos que no deben ir en la imagen de Docker
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.git
+.gitignore
+venv/
+db.sqlite3
+.vscode/
