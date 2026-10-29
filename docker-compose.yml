@@ -5,7 +5,7 @@ services:
     build: .
     container_name: django_store_app
     ports:
-      - "8000:8000"
+      - "79:8000"
     volumes:
       - .:/app
     environment:
