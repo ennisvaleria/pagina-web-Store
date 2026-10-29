@@ -1,4 +1,4 @@
-// ===== CARRITO =====
+
 const CLAVE = "tecstore_carrito";
 const tbody = document.querySelector("#lista-carrito tbody");
 const contador = document.getElementById("contador-carrito");

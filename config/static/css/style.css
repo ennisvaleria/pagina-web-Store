@@ -145,7 +145,6 @@ img{
     border: 0;
     border-top: 1px solid #eee;
     margin: 10px 0;
-}
     backdrop-filter: blur(10px);
     top: 100%;
     z-index: 1;
