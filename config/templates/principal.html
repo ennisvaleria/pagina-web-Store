@@ -108,131 +108,21 @@
             </div>
             <p id="sin-resultados">No encontramos productos con esa búsqueda.</p>
             <div class="container-items">
+            {% for p in productos %}
             <div class="item">
                 <figure>
-                    <img src="{% static 'images/scyrox_v8s_yellow.png' %}" alt="Mouse Gamer Scyrox V8 Yellow">
+                    <img src="{% static p.imagen %}" alt="{{ p.nombre }}">
                 </figure>
                 <div class="info-item">
-                    <h3>Mouse Gamer Scyrox V8 Yellow</h3>
-                    <p>
-                        El Scyrox V8 es un mouse gamer diseñado para ofrecer un alto rendimiento tanto en modo inalámbrico
-                        como cableado, ideal para jugadores competitivos en Chile que buscan precisión, velocidad y
-                        comodidad.
-                    </p>
+                    <h3>{{ p.nombre }}</h3>
+                    <p>{{ p.descripcion }}</p>
                     <p class="price">
-                        $85.990
+                        {{ p.precio_txt }}
                     </p>
                     <button>Añadir al carrito</button>
                 </div>
             </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/Logitech_Pro_X_Superlight_2_Lightspeed.jpg' %}" alt="Mouse Gamer Logitech G PRO X Superlight 2">
-                </figure>
-                <div class="info-item">
-                    <h3>Mouse Gamer Logitech G PRO X Superlight 2</h3>
-                    <p>
-                        El Logitech® G PRO X Superlight 2 es la nueva evolución de un ícono de los juegos profesionales, y
-                        te ayuda a llevar tu juego al siguiente nivel con mayor velocidad y precisión.
-                    </p>
-                    <p class="price">
-                        $135.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/Teclado_Gamer_Logitech_G_PRO_X_60.png' %}" alt="Teclado Gamer Logitech G PRO X 60">
-                </figure>
-                <div class="info-item">
-                    <h3>Teclado Gamer Logitech G PRO X 60</h3>
-                    <p>
-                        Teclado inalámbrico para juegos LIGHTSPEED con un 60 % menos de tamaño, KEYCONTROL, LIGHTSYNC RGB e
-                        interruptores ópticos.
-                    </p>
-                    <p class="price">
-                        $178.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png' %}"
-                        alt="Auriculares Gamer Logitech Astro A50 X Blanco Wireless">
-                </figure>
-                <div class="info-item">
-                    <h3>Auriculares Gamer Logitech Astro A50 X Blanco Wireless</h3>
-                    <p>
-                        Los Astro A50 X están diseñados para jugar con la innovadora tecnología PLAYSYNC.
-                    </p>
-                    <p class="price">
-                        $335.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/silla_gamer_economica_pro.png' %}" alt="Silla Gamer Ergonómica">
-                </figure>
-                <div class="info-item">
-                    <h3>Silla Gamer Ergonómica Pro</h3>
-                    <p>
-                        Silla diseñada para largas sesiones de juego con soporte lumbar ajustable y materiales transpirables.
-                    </p>
-                    <p class="price">
-                        $159.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/Monitor_144_economico.png' %}" alt="Monitor Gamer 144Hz">
-                </figure>
-                <div class="info-item">
-                    <h3>Monitor Gamer 24" 144Hz</h3>
-                    <p>
-                        Experiencia fluida y sin cortes con tasa de refresco de 144Hz y tiempo de respuesta de 1ms.
-                    </p>
-                    <p class="price">
-                        $199.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/Alfombrilla_xxl_rgb.png' %}" alt="Alfombrilla Gamer XXL">
-                </figure>
-                <div class="info-item">
-                    <h3>Alfombrilla Gamer XXL RGB</h3>
-                    <p>
-                        Superficie optimizada para sensores ópticos con iluminación RGB perimetral ajustable.
-                    </p>
-                    <p class="price">
-                        $25.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="item">
-                <figure>
-                    <img src="{% static 'images/Microfono_gamer_usb.png' %}" alt="Micrófono Condensador USB">
-                </figure>
-                <div class="info-item">
-                    <h3>Micrófono Gamer USB Pro</h3>
-                    <p>
-                        Captura audio cristalino para tus streams y llamadas con cancelación de ruido integrada.
-                    </p>
-                    <p class="price">
-                        $65.990
-                    </p>
-                    <button>Añadir al carrito</button>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         </section>
     </main>

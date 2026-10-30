@@ -170,9 +170,41 @@ body{
     transform: translateX(-100%);
 }
 
-.error { 
-    color: #ff4d4d; font-size: 13px; margin: 4px 0; 
+/* Mensajes */
+.error {
+    width: 300px;
+    color: #c0392b;
+    background-color: #fdecea;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    padding: 6px 10px;
+    margin: 0 0 8px;
 }
-.exito { 
-    color: #2e9e4f; font-size: 13px; margin: 4px 0; 
+.exito {
+    width: 300px;
+    color: #1e7e3a;
+    background-color: #e8f6ed;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    padding: 6px 10px;
+    margin: 0 0 8px;
+}
+
+/* Error debajo de cada campo del registro */
+.error-campo {
+    width: 300px;
+    color: #c0392b;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: left;
+    margin: -8px 0 2px;
+}
+.container-input.invalido {
+    outline: 1px solid #c0392b;
+    background-color: #fdecea;
+}
+.container-form form.sign-up {
+    padding: 14px 0;
 }

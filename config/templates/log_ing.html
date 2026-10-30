@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/stylev2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylev2.css' %}?v=2">
 </head>
 <body>
     <div class="container {% if mostrar_registro %}toggle{% endif %}">
@@ -53,32 +53,31 @@
                 </div>
                 <span>Llene todo los campos para registrarse.</span>
 
-                {% for field in registro_form %}
-                    {% for error in field.errors %}
-                        <p class="error">{{ field.label }}: {{ error }}</p>
-                    {% endfor %}
-                {% endfor %}
-
-                <div class="container-input">
+                <div class="container-input{% if registro_form.nombre.errors %} invalido{% endif %}">
                     <ion-icon name="person-outline"></ion-icon>
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre"/>
                 </div>
-                <div class="container-input">
+                {% for error in registro_form.nombre.errors %}<small class="error-campo">{{ error }}</small>{% endfor %}
+                <div class="container-input{% if registro_form.apellido.errors %} invalido{% endif %}">
                     <ion-icon name="person-outline"></ion-icon>
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido"/>
                 </div>
-                <div class="container-input">
+                {% for error in registro_form.apellido.errors %}<small class="error-campo">{{ error }}</small>{% endfor %}
+                <div class="container-input{% if registro_form.direccion.errors %} invalido{% endif %}">
                     <ion-icon name="home-outline"></ion-icon>
                     <input type="text" id="direccion" name="direccion" placeholder="Dirección"/>
                 </div>
-                <div class="container-input">
+                {% for error in registro_form.direccion.errors %}<small class="error-campo">{{ error }}</small>{% endfor %}
+                <div class="container-input{% if registro_form.correo.errors %} invalido{% endif %}">
                     <ion-icon name="mail-outline"></ion-icon>
                     <input type="email" id="correo" name="correo" placeholder="Email"/>
                 </div>
-                <div class="container-input">
+                {% for error in registro_form.correo.errors %}<small class="error-campo">{{ error }}</small>{% endfor %}
+                <div class="container-input{% if registro_form.password.errors %} invalido{% endif %}">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" id="contraseña" name="password" placeholder="Contraseña"/>
                 </div>
+                {% for error in registro_form.password.errors %}<small class="error-campo">{{ error }}</small>{% endfor %}
                 <button type="submit" class="button">REGISTRARSE</button>
             </form>
         </div>
