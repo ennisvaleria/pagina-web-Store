@@ -78,27 +78,12 @@
         <section class="destacado-container">
             <h2>Lo más Destacado</h2>
             <div class="destacado-content">
-
+                {% for p in productos|slice:":4" %}
                 <div class="destacado">
-                    <img src="{% static 'images/scyrox_v8s_yellow.png' %}" alt="Mouse Gamer Scyrox V8 Yellow">
-                    <h3>Mouse Gamer Scyrox V8 Yellow</h3>
+                    <img src="{% static p.imagen %}" alt="{{ p.nombre }}">
+                    <h3>{{ p.nombre }}</h3>
                 </div>
-
-                <div class="destacado">
-                    <img src="{% static 'images/Logitech_Pro_X_Superlight_2_Lightspeed.jpg' %}" alt="Mouse Gamer Logitech G PRO X Superlight 2">
-                    <h3>Mouse Gamer Logitech G PRO X Superlight 2</h3>
-                </div>
-
-                <div class="destacado">
-                    <img src="{% static 'images/Teclado_Gamer_Logitech_G_PRO_X_60.png' %}" alt="Teclado Gamer Logitech G PRO X 60">
-                    <h3>Teclado Gamer Logitech G PRO X 60</h3>
-                </div>
-
-                <div class="destacado">
-                    <img src="{% static 'images/Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png' %}"
-                        alt="Auriculares Gamer Logitech Astro A50 X Blanco Wireless">
-                    <h3>Auriculares Gamer Logitech Astro A50 X Blanco Wireless</h3>
-                </div>
+                {% endfor %}
             </div>
         </section>
         <section class="catalogo" id="catalogo">

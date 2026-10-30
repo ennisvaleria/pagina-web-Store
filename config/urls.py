@@ -25,5 +25,6 @@ urlpatterns = [
     path('principal', views.inicio, name='inicio'),
     path('logout', views.logout, name='logout'),
     path('api/productos', views.api_productos, name='api_productos'),
+    path('api_productos', views.api_productos),
     path('api/usuario', views.api_usuario, name='api_usuario'),
 ]
