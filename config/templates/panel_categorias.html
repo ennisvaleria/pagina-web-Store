@@ -1,0 +1,41 @@
+{% extends 'base_panel.html' %}
+ 
+{% block titulo %}Categorías{% endblock %}
+ 
+{% block contenido %}
+<h2>Categorías</h2>
+ 
+<div class="barra">
+    <a href="{% url 'panel_categoria_crear' %}" class="btn btn-naranja">+ Nueva categoría</a>
+</div>
+ 
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Productos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in categorias %}
+        <tr>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.productos.count }}</td>
+            <td>
+                <div class="acciones">
+                    <a href="{% url 'panel_categoria_editar' c.id %}" class="btn">Editar</a>
+                    <form method="post" action="{% url 'panel_categoria_eliminar' c.id %}"
+                          onsubmit="return confirm('¿Eliminar la categoría {{ c.nombre|escapejs }}?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-rojo">Eliminar</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3" class="vacio">Todavía no hay categorías.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
