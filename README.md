@@ -45,4 +45,13 @@ python manage.py migrate
 
 La contraseña se lee del entorno y no está guardada en el repositorio. Si ya hay un administrador, el aprovisionamiento no lo modifica. Para crear uno manualmente, también está disponible `python manage.py crear_admin`, que solicita la contraseña de forma interactiva.
 
-Para Docker Compose, define `ADMIN_INITIAL_PASSWORD` en el entorno o en un archivo `.env` junto al `docker-compose.yml`; el servicio ejecuta las migraciones antes de iniciar el servidor. No guardes la contraseña en el repositorio.
+Para Docker Compose, crea un archivo `.env` junto al `docker-compose.yml` en el servidor:
+
+```env
+DEBUG=0
+ALLOWED_HOSTS=tienda.ejemplo.cl,www.tienda.ejemplo.cl
+CSRF_TRUSTED_ORIGINS=https://tienda.ejemplo.cl,https://www.tienda.ejemplo.cl
+ADMIN_INITIAL_PASSWORD=elige-una-clave-segura
+```
+
+Reemplaza los dominios por los del servidor. El servicio ejecuta las migraciones antes de iniciar; no subas `.env` ni la contraseña al repositorio.
