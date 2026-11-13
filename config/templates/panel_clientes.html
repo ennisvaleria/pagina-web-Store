@@ -1,0 +1,32 @@
+{% extends 'base_panel.html' %}
+
+{% block titulo %}Clientes{% endblock %}
+
+{% block contenido %}
+<h2>Clientes</h2>
+<table>
+    <thead>
+        <tr><th>Cliente</th><th>Correo</th><th>Dirección</th><th>Registro</th><th>Pedidos</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.nombre }} {{ cliente.apellido }}</td>
+            <td>{{ cliente.correo }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>{{ cliente.fecha_registro|date:"d/m/Y" }}</td>
+            <td>{{ cliente.pedidos.count }}</td>
+            <td>
+                <form method="post" action="{% url 'panel_cliente_eliminar' cliente.id %}"
+                      onsubmit="return confirm('¿Eliminar la cuenta de {{ cliente.nombre|escapejs }} {{ cliente.apellido|escapejs }} y todos sus pedidos?');">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-rojo">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td class="vacio" colspan="6">Todavía no hay clientes.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
