@@ -55,3 +55,5 @@ ADMIN_INITIAL_PASSWORD=elige-una-clave-segura
 ```
 
 Reemplaza los dominios por los del servidor. El servicio ejecuta las migraciones antes de iniciar; no subas `.env` ni la contraseña al repositorio.
+
+Nginx sirve los archivos estáticos y las imágenes subidas desde `staticfiles/` y `media/`; ambos directorios permanecen en el servidor mediante el volumen del proyecto.

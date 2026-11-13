@@ -4,8 +4,8 @@ services:
   web:
     build: .
     container_name: django_store_app
-    ports:
-      - "79:8000"
+    expose:
+      - "8000"
     volumes:
       - .:/app
     environment:
@@ -16,4 +16,17 @@ services:
       ADMIN_INITIAL_EMAIL: "${ADMIN_INITIAL_EMAIL:-admin@tienda.cl}"
       ADMIN_INITIAL_PASSWORD: "${ADMIN_INITIAL_PASSWORD:?Define ADMIN_INITIAL_PASSWORD en tu entorno o archivo .env}"
     command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    container_name: django_store_nginx
+    ports:
+      - "79:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./staticfiles:/srv/static:ro
+      - ./media:/srv/media:ro
+    depends_on:
+      - web
     restart: always
