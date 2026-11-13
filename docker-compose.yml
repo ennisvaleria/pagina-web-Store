@@ -15,5 +15,5 @@ services:
       CSRF_TRUSTED_ORIGINS: "${CSRF_TRUSTED_ORIGINS:-}"
       ADMIN_INITIAL_EMAIL: "${ADMIN_INITIAL_EMAIL:-admin@tienda.cl}"
       ADMIN_INITIAL_PASSWORD: "${ADMIN_INITIAL_PASSWORD:?Define ADMIN_INITIAL_PASSWORD en tu entorno o archivo .env}"
-    command: sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
+    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
     restart: always

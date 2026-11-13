@@ -4,5 +4,6 @@ __pycache__/
 .env
 venv/
 media/
+staticfiles/
 Evaluacion_Integrada_PTEC103_4_Talleres.pdf
 .webui_secret_key
