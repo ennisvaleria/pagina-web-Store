@@ -1,0 +1,29 @@
+{% extends 'base_panel.html' %}
+ 
+{% block titulo %}{{ titulo }}{% endblock %}
+ 
+{% block contenido %}
+<h2>{{ titulo }}</h2>
+ 
+<div class="form-caja">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for error in form.non_field_errors %}
+            <div class="msg error">{{ error }}</div>
+        {% endfor %}
+        {% for field in form %}
+        <div class="campo">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% for error in field.errors %}
+                <small class="err">{{ error }}</small>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <div class="acciones">
+            <button type="submit" class="btn btn-naranja">Guardar</button>
+            <a href="{% url volver %}" class="btn btn-gris">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

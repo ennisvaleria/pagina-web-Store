@@ -1,0 +1,8 @@
+db.sqlite3
+__pycache__/
+*.pyc
+.env
+venv/
+media/
+Evaluacion_Integrada_PTEC103_4_Talleres.pdf
+.webui_secret_key

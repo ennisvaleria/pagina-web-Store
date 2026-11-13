@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil | TecStore</title>
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+</head>
+<body>
+    <header class="barra">
+        <a class="marca" href="{% url 'inicio' %}">TECSTORE</a>
+        <nav>
+            <a href="{% url 'inicio' %}">Volver a la tienda</a>
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <h1>Mi perfil</h1>
+        <p class="sub">
+            {{ cliente.nombre }} {{ cliente.apellido }} · cliente desde {{ cliente.fecha_registro|date:"d/m/Y" }}
+            {% if cliente.rol == 'admin' %}· <strong>Administrador</strong>{% endif %}
+        </p>
+
+        {% for message in messages %}
+            <div class="msg {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+
+        <section class="tarjeta">
+            <h2>Mis datos</h2>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="accion" value="datos">
+                <div class="fila">
+                    <div class="campo">
+                        <label for="{{ f_datos.nombre.id_for_label }}">{{ f_datos.nombre.label }}</label>
+                        {{ f_datos.nombre }}
+                        {% for e in f_datos.nombre.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                    </div>
+                    <div class="campo">
+                        <label for="{{ f_datos.apellido.id_for_label }}">{{ f_datos.apellido.label }}</label>
+                        {{ f_datos.apellido }}
+                        {% for e in f_datos.apellido.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="{{ f_datos.direccion.id_for_label }}">{{ f_datos.direccion.label }}</label>
+                    {{ f_datos.direccion }}
+                    {% for e in f_datos.direccion.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                </div>
+                <div class="campo">
+                    <label for="{{ f_datos.correo.id_for_label }}">{{ f_datos.correo.label }}</label>
+                    {{ f_datos.correo }}
+                    {% for e in f_datos.correo.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                </div>
+                <button type="submit" class="boton">Guardar cambios</button>
+            </form>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Cambiar contraseña</h2>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="accion" value="password">
+                <div class="campo">
+                    <label for="{{ f_pass.actual.id_for_label }}">{{ f_pass.actual.label }}</label>
+                    {{ f_pass.actual }}
+                    {% for e in f_pass.actual.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                </div>
+                <div class="fila">
+                    <div class="campo">
+                        <label for="{{ f_pass.nueva.id_for_label }}">{{ f_pass.nueva.label }}</label>
+                        {{ f_pass.nueva }}
+                        {% for e in f_pass.nueva.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                    </div>
+                    <div class="campo">
+                        <label for="{{ f_pass.repetir.id_for_label }}">{{ f_pass.repetir.label }}</label>
+                        {{ f_pass.repetir }}
+                        {% for e in f_pass.repetir.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                    </div>
+                </div>
+                <button type="submit" class="boton">Cambiar contraseña</button>
+            </form>
+        </section>
+
+        {% if cliente.rol != 'admin' %}
+        <section class="tarjeta peligro">
+            <h2>Eliminar mi cuenta</h2>
+            <p>Esta acción es permanente: se borran tu cuenta y tu historial de pedidos.</p>
+            <form method="post" novalidate
+                  onsubmit="return confirm('¿Seguro que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');">
+                {% csrf_token %}
+                <input type="hidden" name="accion" value="eliminar">
+                <div class="campo">
+                    <label for="{{ f_elim.password.id_for_label }}">Escribe tu contraseña para confirmar</label>
+                    {{ f_elim.password }}
+                    {% for e in f_elim.password.errors %}<small class="err">{{ e }}</small>{% endfor %}
+                </div>
+                <button type="submit" class="boton rojo">Eliminar mi cuenta</button>
+            </form>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>

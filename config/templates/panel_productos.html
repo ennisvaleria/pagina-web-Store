@@ -1,0 +1,60 @@
+{% extends 'base_panel.html' %}
+ 
+{% block titulo %}Productos{% endblock %}
+ 
+{% block contenido %}
+<h2>Productos</h2>
+ 
+<div class="barra">
+    <form method="get">
+        <input type="search" name="q" value="{{ q }}" placeholder="Buscar por nombre o descripción">
+        <select name="categoria">
+            <option value="">Todas las categorías</option>
+            {% for c in categorias %}
+                <option value="{{ c.id }}" {% if categoria_id == c.id|stringformat:"s" %}selected{% endif %}>{{ c.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn">Filtrar</button>
+        <a href="{% url 'panel_productos' %}" class="btn btn-gris">Limpiar</a>
+    </form>
+    <a href="{% url 'panel_producto_crear' %}" class="btn btn-naranja">+ Nuevo producto</a>
+</div>
+ 
+<table>
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Visible</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in productos %}
+        <tr>
+            <td>{% if p.imagen %}<img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">{% endif %}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.categoria.nombre }}</td>
+            <td>${{ p.precio }}</td>
+            <td>{{ p.stock }}</td>
+            <td>{% if p.activo %}<span class="etiqueta-ok">Sí</span>{% else %}<span class="etiqueta-no">No</span>{% endif %}</td>
+            <td>
+                <div class="acciones">
+                    <a href="{% url 'panel_producto_editar' p.id %}" class="btn">Editar</a>
+                    <form method="post" action="{% url 'panel_producto_eliminar' p.id %}"
+                          onsubmit="return confirm('¿Eliminar el producto {{ p.nombre|escapejs }}?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-rojo">Eliminar</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7" class="vacio">No hay productos para mostrar.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

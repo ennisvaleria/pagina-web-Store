@@ -433,3 +433,16 @@ main{
 }
 
 .instagram:hover img{ transform: scale(1.15); }
+
+.user-dropdown .link-menu {
+    display: block;
+    margin-bottom: 10px;
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.user-dropdown .link-menu:hover {
+    text-decoration: underline;
+}

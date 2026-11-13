@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": 1,
+    "generado": "2026-11-12T23:56:50.343687+00:00",
+    "descripcion": "Respaldo de la tienda. Restaurar con: python manage.py cargar_datos respaldo.json"
+  },
+  "categorias": [
+    {
+      "nombre": "Perífericos",
+      "productos": [
+        {
+          "nombre": "Teclado Gamer",
+          "descripcion": "prueba",
+          "precio": 285,
+          "imagen": "productos/Teclado_Gamer_Logitech_G_PRO_X_60.png",
+          "stock": 3,
+          "activo": true
+        }
+      ]
+    }
+  ],
+  "clientes": []
+}

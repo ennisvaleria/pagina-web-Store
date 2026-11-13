@@ -15,16 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# modificaciones de usuario
-dominio = None  # Reemplaza con tu dominio si es necesario
-# ... (resto de tu configuración)
-
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Carpeta donde se guardarán los archivos para el servidor
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'config/static'), # Ruta a tu carpeta actual de static
-]
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
@@ -32,11 +22,18 @@ STATICFILES_DIRS = [
 SECRET_KEY = 'django-insecure-@os*=3os%k93y@!s3im#tnubgy%@khy#lsd$+%ei^j-t%#x3ga'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', '1') == '1'
 
-ALLOWED_HOSTS = [dominio]
-# Debe incluir el protocolo (https://)
-CSRF_TRUSTED_ORIGINS = ['https://'+dominio]
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+    if host.strip()
+]
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+    if origin.strip()
+]
 
 # Application definition
 
@@ -47,7 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'config.apps.ConfigConfig',
 ]
+
+ADMIN_INITIAL_EMAIL = os.environ.get('ADMIN_INITIAL_EMAIL', 'admin@tienda.cl')
+ADMIN_INITIAL_PASSWORD = os.environ.get('ADMIN_INITIAL_PASSWORD')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,10 +123,10 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Configuración de Archivos Estáticos (Unificada y Optimizada)
+# Configuración de archivos estáticos
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'config/static')]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'config' / 'static']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Email
@@ -134,3 +135,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

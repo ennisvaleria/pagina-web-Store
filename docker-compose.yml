@@ -9,6 +9,9 @@ services:
     volumes:
       - .:/app
     environment:
-      - DEBUG=1
-      - PYTHONUNBUFFERED=1
+      DEBUG: "1"
+      PYTHONUNBUFFERED: "1"
+      ADMIN_INITIAL_EMAIL: "${ADMIN_INITIAL_EMAIL:-admin@tienda.cl}"
+      ADMIN_INITIAL_PASSWORD: "${ADMIN_INITIAL_PASSWORD:?Define ADMIN_INITIAL_PASSWORD en tu entorno o archivo .env}"
+    command: sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
     restart: always

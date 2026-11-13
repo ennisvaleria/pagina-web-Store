@@ -29,6 +29,9 @@
                         <li>
                             <a href="#catalogo">Catalogo</a>
                         </li>
+                        <li>
+                            <a href="{% url 'mis_pedidos' %}">Mis pedidos</a>
+                        </li>
                     </ul>
                 </nav>
                 <div>
@@ -52,6 +55,7 @@
                                 <p id="carrito-vacio">Tu carrito está vacío</p>
                                 <p class="carrito-total">Total: <span id="total-carrito">$0</span></p>
                                 <button type="button" id="vaciar-carrito" class="btn-2">Vaciar Carrito</button>
+                                <button type="button" id="finalizar-compra" class="btn-2">Finalizar compra</button>
                             </div>
                         </li>
                         <li class="submenu" id="user-menu-container">
@@ -61,6 +65,8 @@
                                     <p id="user-full-name">{{ usuario }}</p>
                                 </div>
                                 <hr>
+                                <a href="{% url 'perfil' %}" class="link-menu">Mi perfil</a>
+                                {% if es_admin %}<a href="{% url 'panel' %}" class="link-menu">Panel de administración</a>{% endif %}
                                 <button id="btn-logout" class="btn-logout" data-url="{% url 'logout' %}">Cerrar Sesión</button>
                             </div>
                         </li>
@@ -80,7 +86,7 @@
             <div class="destacado-content">
                 {% for p in productos|slice:":4" %}
                 <div class="destacado">
-                    <img src="{% static p.imagen %}" alt="{{ p.nombre }}">
+                    {% if p.imagen %}<img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">{% endif %}
                     <h3>{{ p.nombre }}</h3>
                 </div>
                 {% endfor %}
@@ -96,15 +102,18 @@
             {% for p in productos %}
             <div class="item">
                 <figure>
-                    <img src="{% static p.imagen %}" alt="{{ p.nombre }}">
+                    {% if p.imagen %}<img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">{% endif %}
                 </figure>
                 <div class="info-item">
                     <h3>{{ p.nombre }}</h3>
                     <p>{{ p.descripcion }}</p>
                     <p class="price">
-                        {{ p.precio_txt }}
+                        ${{ p.precio }}
                     </p>
-                    <button>Añadir al carrito</button>
+                    <button data-product-id="{{ p.id }}" data-price="{{ p.precio }}"
+                            {% if not p.stock %}disabled{% endif %}>
+                        {% if p.stock %}Añadir al carrito{% else %}Sin stock{% endif %}
+                    </button>
                 </div>
             </div>
             {% endfor %}
