@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis pedidos | TecStore</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/panel.css' %}">
+</head>
+<body>
+    <main class="contenido">
+        <h2>Mis pedidos</h2>
+        <p><a class="btn" href="{% url 'inicio' %}">Volver a la tienda</a></p>
+        {% for pedido in pedidos %}
+        <section class="form-caja" style="margin-top: 20px;">
+            <h3>Pedido #{{ pedido.id }}</h3>
+            <p>Fecha: {{ pedido.fecha|date:"d/m/Y H:i" }}</p>
+            <p>Estado: {{ pedido.get_estado_display }}</p>
+            <p>Total: ${{ pedido.total }}</p>
+            <table style="margin-top: 12px;">
+                <thead>
+                    <tr><th>Producto</th><th>Cantidad</th><th>Precio unitario</th><th>Subtotal</th></tr>
+                </thead>
+                <tbody>
+                    {% for detalle in pedido.detalles.all %}
+                    <tr>
+                        <td>{{ detalle.producto.nombre }}</td>
+                        <td>{{ detalle.cantidad }}</td>
+                        <td>${{ detalle.precio_unitario }}</td>
+                        <td>${% widthratio detalle.precio_unitario 1 detalle.cantidad %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% empty %}
+        <p>Aún no tienes pedidos.</p>
+        {% endfor %}
+    </main>
+</body>
+</html>

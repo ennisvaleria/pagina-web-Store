@@ -31,3 +31,18 @@ graph TD
 
 ## Flujo de Datos
 El flujo es cíclico: **Usuario** $\rightarrow$ **URL** $\rightarrow$ **Vista** $\rightarrow$ **Modelo** $\rightarrow$ **DB** $\rightarrow$ **Modelo** $\rightarrow$ **Vista** $\rightarrow$ **Template** $\rightarrow$ **Usuario**.
+
+## Administrador del panel
+
+El login y el registro usan el modelo `Cliente`; las contraseñas se guardan cifradas. Al ejecutar las migraciones, Django crea `admin@tienda.cl` si todavía no existe ningún administrador y si se configuró la variable de entorno `ADMIN_INITIAL_PASSWORD`. `ADMIN_INITIAL_EMAIL` permite cambiar el correo; su valor predeterminado es `admin@tienda.cl`.
+
+Para desarrollo local, antes de migrar:
+
+```bash
+export ADMIN_INITIAL_PASSWORD='elige-una-clave-segura'
+python manage.py migrate
+```
+
+La contraseña se lee del entorno y no está guardada en el repositorio. Si ya hay un administrador, el aprovisionamiento no lo modifica. Para crear uno manualmente, también está disponible `python manage.py crear_admin`, que solicita la contraseña de forma interactiva.
+
+Al preparar Docker Compose, el servicio deberá proporcionar `ADMIN_INITIAL_PASSWORD` y ejecutar `python manage.py migrate` antes de iniciar el servidor. No se incluyen aquí archivos Docker.

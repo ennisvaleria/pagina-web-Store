@@ -13,9 +13,8 @@
         <p class="sub">Panel de administrador</p>
         <a href="{% url 'panel_productos' %}">Productos</a>
         <a href="{% url 'panel_categorias' %}">Categorías</a>
-        {# Estas dos rutas las crea la Persona 4. Van fijas para que esta página no falle antes de que existan #}
-        <a href="/panel/pedidos/">Pedidos</a>
-        <a href="/panel/clientes/">Clientes</a>
+        <a href="{% url 'panel_pedidos' %}">Pedidos</a>
+        <a href="{% url 'panel_clientes' %}">Clientes</a>
         <div class="abajo">
             <a href="{% url 'inicio' %}">Ver tienda</a>
             <a href="{% url 'logout' %}">Cerrar sesión</a>
