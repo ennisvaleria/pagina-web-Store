@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "version": 1,
+    "descripcion": "Datos iniciales de la tienda. Cargar con: python manage.py cargar_datos",
+    "nota": "Los clientes/admin no van aqui: el admin se crea con crear_admin."
+  },
+  "categorias": [
+    {
+      "nombre": "Periféricos",
+      "productos": [
+        {
+          "nombre": "Mouse Gamer Scyrox V8 Yellow",
+          "descripcion": "El Scyrox V8 es un mouse gamer diseñado para ofrecer un alto rendimiento tanto en modo inalámbrico como cableado.",
+          "precio": 85990,
+          "imagen": "productos/scyrox_v8s_yellow.png",
+          "stock": 15,
+          "activo": true
+        },
+        {
+          "nombre": "Mouse Gamer Logitech G PRO X Superlight 2",
+          "descripcion": "La nueva evolución de un ícono de los juegos profesionales, con mayor velocidad y precisión.",
+          "precio": 135990,
+          "imagen": "productos/Logitech_Pro_X_Superlight_2_Lightspeed.jpg",
+          "stock": 10,
+          "activo": true
+        },
+        {
+          "nombre": "Teclado Gamer Logitech G PRO X 60",
+          "descripcion": "Teclado inalámbrico para juegos LIGHTSPEED con un 60 % menos de tamaño, KEYCONTROL y LIGHTSYNC RGB.",
+          "precio": 178990,
+          "imagen": "productos/Teclado_Gamer_Logitech_G_PRO_X_60.png",
+          "stock": 8,
+          "activo": true
+        },
+        {
+          "nombre": "Alfombrilla Gamer XXL RGB",
+          "descripcion": "Superficie optimizada para sensores ópticos con iluminación RGB perimetral.",
+          "precio": 25990,
+          "imagen": "productos/Alfombrilla_xxl_rgb.png",
+          "stock": 20,
+          "activo": true
+        }
+      ]
+    },
+    {
+      "nombre": "Audio",
+      "productos": [
+        {
+          "nombre": "Auriculares Gamer Logitech Astro A50 X Blanco Wireless",
+          "descripcion": "Diseñados para jugar con la innovadora tecnología PLAYSYNC.",
+          "precio": 335990,
+          "imagen": "productos/Auriculares_Gamer_Logitech_Astro_A50_X_Blanco_Wireless.png",
+          "stock": 5,
+          "activo": true
+        },
+        {
+          "nombre": "Micrófono Gamer USB Pro",
+          "descripcion": "Audio cristalino para tus streams y llamadas con cancelación de ruido integrada.",
+          "precio": 65990,
+          "imagen": "productos/Microfono_gamer_usb.png",
+          "stock": 12,
+          "activo": true
+        }
+      ]
+    },
+    {
+      "nombre": "Sillas",
+      "productos": [
+        {
+          "nombre": "Silla Gamer Ergonómica Pro",
+          "descripcion": "Soporte lumbar ajustable y materiales transpirables para largas sesiones de juego.",
+          "precio": 159990,
+          "imagen": "productos/silla_gamer_economica_pro.png",
+          "stock": 6,
+          "activo": true
+        }
+      ]
+    },
+    {
+      "nombre": "Monitores",
+      "productos": [
+        {
+          "nombre": "Monitor Gamer 24\" 144Hz",
+          "descripcion": "Experiencia fluida con tasa de refresco de 144Hz y tiempo de respuesta de 1ms.",
+          "precio": 199990,
+          "imagen": "productos/Monitor_144_economico.png",
+          "stock": 7,
+          "activo": true
+        }
+      ]
+    }
+  ],
+  "clientes": []
+}
