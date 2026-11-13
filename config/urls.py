@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from . import views_admin
+from . import views_cuenta
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,7 +41,9 @@ urlpatterns = [
     path('panel/categorias/nueva/', views_admin.categoria_crear, name='panel_categoria_crear'),
     path('panel/categorias/<int:pk>/editar/', views_admin.categoria_editar, name='panel_categoria_editar'),
     path('panel/categorias/<int:pk>/eliminar/', views_admin.categoria_eliminar, name='panel_categoria_eliminar'),
-    
+
+    # Cuenta del cliente
+    path('perfil', views_cuenta.perfil, name='perfil'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,13 +2,13 @@ import unicodedata
 
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password, make_password
+from django.db import DatabaseError, IntegrityError
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.templatetags.static import static
+from .decorators import cliente_actual
 from .forms import LoginForm, RegistroForm
-
-# Registro temporal en memoria (Taller 2: aún no se usa base de datos)
-USUARIOS = {}
+from .models import Cliente
 
 # Catálogo que entrega el backend (antes estaba escrito a mano en el HTML)
 PRODUCTOS = [
@@ -90,10 +90,10 @@ def _productos_para_mostrar(busqueda=""):
 
 
 def inicio(request):
-    user = USUARIOS.get(request.session.get('usuario'))
-    nombre = f"{user['nombre']} {user['apellido']}" if user else 'Invitado'
+    cliente = cliente_actual(request)
     return render(request, 'principal.html', {
-        'usuario': nombre,
+        'usuario': f"{cliente.nombre} {cliente.apellido}" if cliente else 'Invitado',
+        'es_admin': bool(cliente and cliente.rol == 'admin'),
         'productos': _productos_para_mostrar(),
     })
 
@@ -105,11 +105,17 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             correo = form.cleaned_data['correo'].lower()
-            user = USUARIOS.get(correo)
-            if user and check_password(form.cleaned_data['password'], user['password']):
-                request.session['usuario'] = correo
-                return redirect('inicio')
-            error_login = 'Correo o contraseña incorrectos.'
+            try:
+                cliente = Cliente.objects.filter(correo__iexact=correo).first()
+            except DatabaseError:
+                error_login = 'No pudimos consultar la base de datos. Intenta de nuevo.'
+            else:
+                if cliente and check_password(form.cleaned_data['password'], cliente.password):
+                    request.session.cycle_key()
+                    request.session['usuario'] = cliente.correo
+                    request.session['rol'] = cliente.rol
+                    return redirect('panel' if cliente.rol == 'admin' else 'inicio')
+                error_login = 'Correo o contraseña incorrectos.'
     return render(request, 'log_ing.html', {'form': form, 'error_login': error_login})
 
 
@@ -120,17 +126,23 @@ def registro(request):
     form = RegistroForm(request.POST)
     if form.is_valid():
         correo = form.cleaned_data['correo'].lower()
-        if correo in USUARIOS:
+        try:
+            if Cliente.objects.filter(correo__iexact=correo).exists():
+                form.add_error('correo', 'El correo ya está registrado.')
+            else:
+                Cliente.objects.create(
+                    nombre=form.cleaned_data['nombre'],
+                    apellido=form.cleaned_data['apellido'],
+                    direccion=form.cleaned_data['direccion'],
+                    correo=correo,
+                    password=make_password(form.cleaned_data['password']),
+                )
+                messages.success(request, 'Cuenta creada. Ya puedes iniciar sesión.')
+                return redirect('login')
+        except IntegrityError:
             form.add_error('correo', 'El correo ya está registrado.')
-        else:
-            USUARIOS[correo] = {
-                'nombre': form.cleaned_data['nombre'],
-                'apellido': form.cleaned_data['apellido'],
-                'direccion': form.cleaned_data['direccion'],
-                'password': make_password(form.cleaned_data['password']),
-            }
-            messages.success(request, 'Cuenta creada. Ya puedes iniciar sesión.')
-            return redirect('login')
+        except DatabaseError:
+            form.add_error(None, 'No pudimos guardar tu cuenta. Intenta de nuevo.')
 
     return render(request, 'log_ing.html', {
         'form': LoginForm(),
@@ -163,15 +175,17 @@ def api_productos(request):
 
 
 def api_usuario(request):
-    """GET /api/usuario  ->  datos del usuario con sesión activa (sin contraseña)."""
-    correo = request.session.get("usuario")
-    user = USUARIOS.get(correo)
-    if not user:
+    """GET /api/usuario  ->  datos del cliente con sesión activa (sin contraseña)."""
+    cliente = cliente_actual(request)
+    if not cliente:
         return JsonResponse({"autenticado": False})
     return JsonResponse({
         "autenticado": True,
-        "correo": correo,
-        "nombre": user["nombre"],
-        "apellido": user["apellido"],
-        "direccion": user["direccion"],
+        "id": cliente.id,
+        "correo": cliente.correo,
+        "nombre": cliente.nombre,
+        "apellido": cliente.apellido,
+        "direccion": cliente.direccion,
+        "rol": cliente.rol,
+        "fecha_registro": cliente.fecha_registro.isoformat(),
     }, json_dumps_params={"ensure_ascii": False})

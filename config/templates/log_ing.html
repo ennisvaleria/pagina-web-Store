@@ -20,7 +20,7 @@
                 <span>Ingrese su correo y contraseña.</span>
 
                 {% for message in messages %}
-                    <p class="exito">{{ message }}</p>
+                    <p class="{% if message.tags == 'error' %}error{% else %}exito{% endif %}">{{ message }}</p>
                 {% endfor %}
                 {% if error_login %}
                     <p class="error">{{ error_login }}</p>
@@ -52,6 +52,7 @@
                     <ion-icon name="logo-instagram"></ion-icon>
                 </div>
                 <span>Llene todo los campos para registrarse.</span>
+                {% for e in registro_form.non_field_errors %}<p class="error">{{ e }}</p>{% endfor %}
 
                 <div class="container-input{% if registro_form.nombre.errors %} invalido{% endif %}">
                     <ion-icon name="person-outline"></ion-icon>
