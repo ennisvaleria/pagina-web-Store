@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/stylev2.css' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/stylev2.css' %}?v=4">
 </head>
 <body>
     <div class="container {% if mostrar_registro %}toggle{% endif %}">
@@ -15,7 +15,9 @@
                 {% csrf_token %}
                 <h2>Iniciar sesión</h2>
                 <div class="social-networks">
-                    <ion-icon name="logo-instagram"></ion-icon>
+                    <a class="social-link" href="https://www.instagram.com/tecs.hop/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de TecStore">
+                        <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                    </a>
                 </div>
                 <span>Ingrese su correo y contraseña.</span>
 
@@ -49,7 +51,9 @@
                 {% csrf_token %}
                 <h2>Registrarse</h2>
                 <div class="social-networks">
-                    <ion-icon name="logo-instagram"></ion-icon>
+                    <a class="social-link" href="https://www.instagram.com/tecs.hop/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de TecStore">
+                        <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                    </a>
                 </div>
                 <span>Llene todo los campos para registrarse.</span>
                 {% for e in registro_form.non_field_errors %}<p class="error">{{ e }}</p>{% endfor %}
