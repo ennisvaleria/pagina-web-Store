@@ -4,6 +4,7 @@
 
 {% block contenido %}
 <h2>Pedidos</h2>
+<div class="tabla-scroll">
 <table>
     <thead>
         <tr><th>N.º</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Total</th><th>Acciones</th></tr>
@@ -23,4 +24,5 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% endblock %}
