@@ -145,13 +145,6 @@ img{
     border: 0;
     border-top: 1px solid #eee;
     margin: 10px 0;
-    backdrop-filter: blur(10px);
-    top: 100%;
-    z-index: 1;
-    background-color: #77777797;
-    padding: 20px;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 table{
@@ -445,4 +438,231 @@ main{
 
 .user-dropdown .link-menu:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 1000px) {
+    .menu-container {
+        left: 0;
+        transform: none;
+        min-height: 72px;
+        padding: 0 18px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .menu-container label[for="menu"] {
+        display: block;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .menu-icono {
+        display: block;
+    }
+
+    .navbar-carrito {
+        flex: 0 0 auto;
+        gap: 0;
+    }
+
+    .navbar-carrito .navbar {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    #menu:checked ~ .navbar-carrito .navbar {
+        display: block;
+    }
+
+    .navbar-carrito .navbar ul li {
+        float: none;
+    }
+
+    .navbar-carrito .navbar ul li a {
+        padding: 12px 20px;
+    }
+
+    .navbar-carrito > div > ul {
+        gap: 14px !important;
+    }
+
+    .header {
+        min-height: 68svh;
+        padding: 82px 22px 28px;
+    }
+
+    .header-content,
+    .header-txt {
+        width: 100%;
+        margin: 0;
+    }
+
+    .header-txt {
+        max-width: 560px;
+    }
+
+    .header-txt h1 {
+        font-size: clamp(32px, 7vw, 48px);
+        line-height: 1.15;
+    }
+
+    .bg {
+        top: 72px;
+        right: 0;
+        bottom: auto;
+        width: min(72vw, 500px);
+        max-height: 48svh;
+        object-fit: contain;
+        object-position: right center;
+        opacity: 0.28;
+    }
+
+    main {
+        padding: 0 18px;
+    }
+
+    .destacado-container {
+        margin-bottom: 90px;
+    }
+
+    .destacado-content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        height: auto;
+    }
+
+    .destacado {
+        min-width: 0;
+        min-height: 150px;
+        border-radius: 10px;
+        background: #f5f5f5;
+    }
+
+    .destacado img {
+        height: 130px;
+        opacity: 1;
+    }
+
+    .destacado h3 {
+        position: static;
+        padding: 8px;
+        font-size: 14px;
+        text-align: center;
+        opacity: 1;
+    }
+
+    .container-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .item img {
+        height: 190px;
+    }
+
+    .info-item {
+        padding: 12px;
+    }
+
+    .info-item h3 {
+        font-size: 17px;
+    }
+
+    .submenu:hover #carrito,
+    .submenu #carrito.abierto {
+        right: -42px;
+        width: min(420px, calc(100vw - 24px));
+        min-width: 0;
+        padding: 14px;
+    }
+
+    #lista-carrito th,
+    #lista-carrito td {
+        padding: 5px 3px;
+        font-size: 12px;
+    }
+
+    #carrito .btn-2 {
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
+    .footer {
+        padding: 38px 18px 24px;
+    }
+}
+
+@media (max-width: 430px) {
+    .menu-container {
+        padding: 0 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .navbar-carrito > div > ul {
+        gap: 10px !important;
+    }
+
+    .header {
+        min-height: 62svh;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .header-txt h1 {
+        font-size: clamp(30px, 8vw, 38px);
+    }
+
+    .destacado-container h2,
+    .catalogo h2 {
+        font-size: 28px;
+    }
+
+    main {
+        padding: 0 12px;
+    }
+
+    .container-items {
+        gap: 10px;
+    }
+
+    .item img {
+        height: 150px;
+    }
+
+    .info-item {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .info-item h3 {
+        min-height: 0;
+        font-size: 15px;
+    }
+
+    .info-item button {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    #lista-carrito th:first-child,
+    #lista-carrito td:first-child {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .container-items {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
