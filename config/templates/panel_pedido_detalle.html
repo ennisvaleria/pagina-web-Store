@@ -17,6 +17,7 @@
         </select>
         <button type="submit" class="btn btn-naranja">Actualizar estado</button>
     </form>
+    <div class="tabla-scroll">
     <table>
         <thead>
             <tr><th>Producto</th><th>Cantidad</th><th>Precio unitario</th><th>Subtotal</th></tr>
@@ -33,6 +34,7 @@
             <tr><th colspan="3">Total</th><th>${{ pedido.total }}</th></tr>
         </tbody>
     </table>
+    </div>
     <p style="margin-top: 16px;"><a class="btn btn-gris" href="{% url 'panel_pedidos' %}">Volver a pedidos</a></p>
 </div>
 {% endblock %}
