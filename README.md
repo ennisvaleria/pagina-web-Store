@@ -46,3 +46,10 @@ python manage.py migrate
 La contraseña se lee del entorno y no está guardada en el repositorio. Si ya hay un administrador, el aprovisionamiento no lo modifica. Para crear uno manualmente, también está disponible `python manage.py crear_admin`, que solicita la contraseña de forma interactiva.
 
 Al preparar Docker Compose, el servicio deberá proporcionar `ADMIN_INITIAL_PASSWORD` y ejecutar `python manage.py migrate` antes de iniciar el servidor. No se incluyen aquí archivos Docker.
+
+## Aplicación móvil
+
+La carpeta [`mobile/`](./mobile/) contiene una app Capacitor para Android e iOS
+que abre el sitio desplegado en `https://test.coous.qzz.io`. Django debe seguir
+ejecutándose en el servidor y la app requiere conexión a internet. Consulta
+[`mobile/README.md`](./mobile/README.md) para instalar dependencias y compilarla.

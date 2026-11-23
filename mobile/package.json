@@ -1,0 +1,19 @@
+{
+  "name": "tecstore-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicación móvil de TecStore basada en Capacitor",
+  "scripts": {
+    "sync": "cap sync",
+    "android": "cap open android",
+    "ios": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.6.2"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/cli": "^8.6.2",
+    "@capacitor/ios": "^8.6.2"
+  }
+}
