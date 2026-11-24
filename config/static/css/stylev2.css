@@ -90,6 +90,22 @@ body{
     margin-top: 5px;
 }
 
+.container-form .social-link{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: inherit;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.container-form .social-link:focus-visible{
+    outline: 2px solid #FF9000;
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
 .button{
     width: 170px;
     height: 45px;
@@ -207,4 +223,96 @@ body{
 }
 .container-form form.sign-up {
     padding: 14px 0;
+}
+
+@media (max-width: 760px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 24px 16px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 440px;
+        height: auto;
+        flex-direction: column;
+        border-radius: 12px;
+    }
+
+    .container > .container-form {
+        display: none;
+        width: 100%;
+        flex: none;
+        overflow: visible;
+    }
+
+    .container:not(.toggle) > .container-form:first-child,
+    .container.toggle > .container-form:nth-child(2) {
+        display: block;
+    }
+
+    .container-form form {
+        height: auto;
+        min-height: 0;
+        padding: 28px 20px;
+        transition: none;
+    }
+
+    .sign-up,
+    .container.toggle .sign-in,
+    .container.toggle .sign-up {
+        transform: none;
+    }
+
+    .container-form h2 {
+        font-size: 27px;
+    }
+
+    .container-input,
+    .error,
+    .exito,
+    .error-campo {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .container-welcome,
+    .container.toggle .container-welcome {
+        position: relative;
+        order: -1;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 22px 18px;
+        transform: none;
+        border-radius: 0;
+    }
+
+    .container-welcome .welcome {
+        position: static;
+        display: none;
+        padding: 0;
+        gap: 12px;
+        transform: none;
+    }
+
+    .container-welcome .welcome-sign-up,
+    .container.toggle .container-welcome .welcome-sign-in {
+        display: flex;
+    }
+
+    .container.toggle .container-welcome .welcome-sign-up,
+    .container:not(.toggle) .container-welcome .welcome-sign-in {
+        display: none;
+    }
+
+    .container-welcome h3 {
+        font-size: 28px;
+    }
+
+    .container-welcome p {
+        max-width: 320px;
+    }
 }
