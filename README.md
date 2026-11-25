@@ -214,4 +214,20 @@ El flujo es cíclico: **Usuario** $\rightarrow$ **URL** $\rightarrow$ **Vista** 
 
 El login y el registro usan el modelo `Cliente`. El administrador inicial se crea al ejecutar las migraciones si se configuró la variable de entorno `ADMIN_INITIAL_PASSWORD`; `ADMIN_INITIAL_EMAIL` permite cambiar el correo (por defecto `admin@tienda.cl`). Si ya existe un administrador, no se modifica.
 
+Para desarrollo local, antes de migrar:
+
+```bash
+export ADMIN_INITIAL_PASSWORD='elige-una-clave-segura'
+python manage.py migrate
+```
+
+La contraseña se lee del entorno y no está guardada en el repositorio. Si ya hay un administrador, el aprovisionamiento no lo modifica. Para crear uno manualmente, también está disponible `python manage.py crear_admin`, que solicita la contraseña de forma interactiva.
+
 Al preparar Docker Compose, el servicio debe proporcionar `ADMIN_INITIAL_PASSWORD` y ejecutar `python manage.py migrate` antes de iniciar el servidor.
+
+## Aplicación móvil
+
+La carpeta [`mobile/`](./mobile/) contiene una app Capacitor para Android e iOS
+que abre el sitio desplegado en `https://test.coous.qzz.io`. Django debe seguir
+ejecutándose en el servidor y la app requiere conexión a internet. Consulta
+[`mobile/README.md`](./mobile/README.md) para instalar dependencias y compilarla.

@@ -1,0 +1,12 @@
+{
+  "appId": "io.qzz.coous.test",
+  "appName": "TecStore",
+  "webDir": "www",
+  "server": {
+    "url": "https://test.coous.qzz.io",
+    "cleartext": false,
+    "allowNavigation": [
+      "test.coous.qzz.io"
+    ]
+  }
+}
